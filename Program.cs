@@ -27,14 +27,12 @@ namespace SinglyLinkedList
         public void AddLast(T data){
             // create a new node for your current data.
             ListNode<T> newNode = new ListNode<T>(data);
-
             //if the node is empty the head becomes the new node
             if(head == null){
                 head = newNode;
             }else{
                 // get the current node ie the first node. 
                 ListNode<T> current = head; 
-                
                 // move the current head until we get to the last node
                 while(current.next != null){
                      // the current node becomes the next node of the current one.
@@ -43,7 +41,6 @@ namespace SinglyLinkedList
                 // We have the last current node. now we make the next  node of the current node to be our newly created node
                 current.next = newNode;
             }
-
         }
         public void RemoveFirst(){
             // make the next node to be the current head
@@ -73,7 +70,7 @@ namespace SinglyLinkedList
             // get the current node ie. the head
             ListNode<T> current = head;
             while(current != null){
-                Console.WriteLine(current.data);
+                Console.Write(current.data + " ");
                 current = current.next;
             }
         }
@@ -90,6 +87,16 @@ namespace SinglyLinkedList
             }
             head = previous;
         }
+          public int Size(){
+            int size = 0;
+            ListNode<T> current = head;
+            while(current != null){
+                size++;
+                current = current.next;
+            }
+            return size;
+
+        }
 
     }
     class Program
@@ -102,14 +109,16 @@ namespace SinglyLinkedList
             list.AddFirst(2);
             list.AddFirst(3);
             list.AddLast(9);
-            list.RemoveLast();
+            // list.RemoveLast();
             
             list.PrintAll();
-            Console.WriteLine("**********************");
+            Console.WriteLine("\n**********************");
             Console.WriteLine("*   Reversed List    *");
             Console.WriteLine("**********************");
             list.ReverseList();
             list.PrintAll();
+         
+            Console.ReadLine();
         }
     }
 }
